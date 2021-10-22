@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">GetStarted</string>
     <string name="question">Qual o valor de x na seguinte equação?</string>
-    <string name="equation">2 + 3 = x</string>
+    <string name="a">2 + 3 = x</string>
     <string name="button">Button</string>
     <string name="x">x =</string>
     <string name="valor">valor</string>
     <string name="resultado">O resultado está:</string>
+    <string name="equation">a + b = x</string>
+    <string name="resposta">resposta</string>
 </resources>

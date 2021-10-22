@@ -13,19 +13,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var counter = 0
+
         val mResultado = findViewById<TextView>(R.id.textView3)
+        val equation = findViewById<TextView>(R.id.textView2)
         val mEditText = findViewById<EditText>(R.id.editTextNumber)
         val mButton = findViewById<Button>(R.id.button)
+        val counterText = findViewById<TextView>(R.id.correctCounter)
+        counterText.text = "Repostas certas: " + counter
 
-        mButton.setOnClickListener(object: View.OnClickListener{
-            override fun onClick(v: View?) {
+        var a = (Math.random() * 10).toInt()
+        var b = (Math.random() * 10).toInt()
+        equation.text = "" + a + " + " + b + " = x"
 
-                if(mEditText.text.toString() == "5") {
-                    mResultado.text = "O resultado está certo"
-                } else {
-                    mResultado.text = "O resultado está errado"
-                }
+        mButton.setOnClickListener { v ->
+            val response = mEditText.text.toString().toInt()
+            Log.d("Response", response.toString())
+            if ( response == (a+b)) {
+                mResultado.text = "O resultado está certo"
+                counter++
+                counterText.text = "Repostas certas: " + counter
+            } else {
+                mResultado.text = "O resultado está errado"
+                counter = 0
+                counterText.text = "Repostas certas: " + counter
             }
-        })
+            a = (Math.random() * 10).toInt()
+            b = (Math.random() * 10).toInt()
+            equation.text = "" + a + " + " + b + " = x"
+
+        }
     }
 }
