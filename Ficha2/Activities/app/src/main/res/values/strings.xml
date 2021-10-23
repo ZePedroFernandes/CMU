@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Activities</string>
+    <string name="activities">Activities</string>
+    <string name="label">Escreva um texto</string>
 </resources>
