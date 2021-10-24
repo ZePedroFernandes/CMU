@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Layouts">
         <activity
-            android:name=".MainActivity"
+            android:name=".TableLayout"
+            android:exported="false" />
+        <activity
+            android:name=".RelativeLayout"
+            android:exported="false" />
+        <activity
+            android:name=".LinearLayout"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

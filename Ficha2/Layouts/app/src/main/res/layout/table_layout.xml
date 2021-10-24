@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    tools:context=".TableLayout">
+
+    <TableRow
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_column="0"
+            android:id="@+id/textView5"
+            android:textSize="20sp"
+            android:text="@string/table_layout"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="0"
+            android:id="@+id/textView6"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:labelFor="@id/spinner"
+            android:text="@string/pais" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:minHeight="48dp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+    </TableRow>
+
+    <TableLayout>
+        <TableRow
+            android:gravity="center">
+
+            <RadioGroup
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/op_o_1" />
+
+                <RadioButton
+                    android:id="@+id/radioButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/op_o_2" />
+
+            </RadioGroup>
+
+        </TableRow>
+    </TableLayout>
+
+    <TableRow>
+
+        <Button
+            android:layout_span="@integer/material_motion_duration_long_1"
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fechar Table Activity" />
+    </TableRow>
+
+
+</TableLayout>

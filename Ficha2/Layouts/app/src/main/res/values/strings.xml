@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Layouts</string>
+    <string name="layouts">Layouts</string>
+    <string name="LinearLayout">Linear Layout</string>
+    <string name="ir_para_relative_layout">Ir para relative Layout</string>
+    <string name="op_o_2">Opção 2</string>
+    <string name="op_o_1">Opção 1</string>
+    <string name="relative_layout">Relative Layout</string>
+    <string name="pais">Pais</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="relative_layout_button">Ir Para Table Activity</string>
+    <string name="table_layout">Table Layout</string>
 </resources>
