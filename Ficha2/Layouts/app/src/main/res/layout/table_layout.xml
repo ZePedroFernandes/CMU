@@ -67,7 +67,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fechar Table Activity" />
+            android:text="@string/fechar_table_activity" />
     </TableRow>
 
 
