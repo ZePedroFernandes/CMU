@@ -13,4 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.TextInputs" parent="TextAppearance.MaterialComponents.Headline1">
+            <item name="android:textColorHint">@color/purple_500</item>
+    </style>
 </resources>
