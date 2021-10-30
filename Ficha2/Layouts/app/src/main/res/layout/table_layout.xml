@@ -21,8 +21,8 @@
     <TableRow>
 
         <TextView
-            android:layout_column="0"
             android:id="@+id/textView6"
+            android:layout_column="0"
             android:layout_height="match_parent"
             android:gravity="center"
             android:labelFor="@id/spinner"
