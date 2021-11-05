@@ -1,3 +1,0 @@
-Ficha 3
-Como clicar no botão da notificação "Title" e não criar uma nova atividade?
-Como receber o texto do reply button?
