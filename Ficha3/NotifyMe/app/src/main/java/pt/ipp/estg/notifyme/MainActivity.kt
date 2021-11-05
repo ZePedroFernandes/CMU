@@ -19,7 +19,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
 
-
 class MainActivity : AppCompatActivity() {
 
     val CHANNEL_ID = "mychannel"
@@ -37,8 +36,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun getNotiBuilder(text: String): NotificationCompat.Builder {
 
+        // Reply Button
         val pending_intent =
-            PendingIntent.getActivity(this, 0, replyIntent, PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.getActivity(this, 0, replyIntent, PendingIntent.FLAG_MUTABLE)
 
         val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY).run {
             setLabel(getString(R.string.reply_label))
@@ -47,16 +47,19 @@ class MainActivity : AppCompatActivity() {
 
         val replyAction = NotificationCompat.Action.Builder(0, "Reply", pending_intent)
             .addRemoteInput(remoteInput).build()
+        // -------------------------------------------------
 
+        // Other Button
         val intent2 = Intent(this, MainActivity::class.java)
         val pendingIntent2 =
-            PendingIntent.getActivity(this, 0, intent2, PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.getActivity(this, 0, intent2, PendingIntent.FLAG_MUTABLE)
         val buttonAction =
             NotificationCompat.Action.Builder(R.drawable.notification_icon, "Title", pendingIntent2)
                 .build()
+        // -------------------------------------------------
 
         val deleteIntent = Intent(NOTIFICATION_DELETED)
-        val deletePendingIntent = PendingIntent.getBroadcast(this, 1, deleteIntent, 0)
+        val deletePendingIntent = PendingIntent.getBroadcast(this, 1, deleteIntent, PendingIntent.FLAG_MUTABLE)
         registerReceiver(receiver, IntentFilter(NOTIFICATION_DELETED))
 
         val mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)

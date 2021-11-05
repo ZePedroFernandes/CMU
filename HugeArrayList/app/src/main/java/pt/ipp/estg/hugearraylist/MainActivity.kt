@@ -9,7 +9,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val images: ArrayList<DummyObject> = ArrayList(500)
 
         for (i in 0..500)
