@@ -20,7 +20,6 @@ class QuestionAdapter(private val context: Context, private val dataSet: List<Qu
     RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         val questionState: ImageView = view.findViewById(R.id.ivQuestionState)
         val questionTitle: TextView = view.findViewById(R.id.tvQuestionTitle)
         val btnGoToQuestion: Button = view.findViewById(R.id.btnGoToQuestion)
