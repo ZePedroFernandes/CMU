@@ -1,4 +1,6 @@
 package pt.ipp.estg.contactlist.models
 
-class Contact(nome: String, telefone: Int) {
+class Contact(
+    val name: String,
+    val phone: Int) {
 }

@@ -5,11 +5,12 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/btnDelete"
+        android:id="@+id/btnDeleteContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/delete"
 
+        android:layout_marginHorizontal="10dp"
         android:textSize="11sp"
 
         android:backgroundTint="@color/red"
@@ -28,7 +29,7 @@
         android:orientation="vertical"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintEnd_toStartOf="@+id/btnDeleteContact"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
