@@ -12,7 +12,6 @@ import fichas.fragments.R
 import fichas.fragments.adapters.CityAdapter
 import fichas.fragments.models.City
 
-
 class CityListFragment() : Fragment(R.layout.city_list) {
     private lateinit var communication: Communication
     private lateinit var dataset: MainActivity.cityList<City>
