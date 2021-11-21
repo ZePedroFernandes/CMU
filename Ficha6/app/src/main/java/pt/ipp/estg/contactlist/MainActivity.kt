@@ -4,25 +4,30 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import pt.ipp.estg.contactlist.fragments.CreateContactFragment
+import androidx.room.Room
+import pt.ipp.estg.contactlist.data_base.ContactDataBase
 import pt.ipp.estg.contactlist.fragments.ContactListFragment
-import pt.ipp.estg.contactlist.models.Contact
-import java.io.Serializable
+import pt.ipp.estg.contactlist.fragments.CreateContactFragment
 
 class MainActivity : AppCompatActivity(), ContactCommunication {
 
-    private val contacts = contactList<Contact>()
-
-    inner class contactList<Contact>() : ArrayList<Contact>(), Serializable {
-    }
+    private lateinit var db: ContactDataBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        db = Room.databaseBuilder(
+            this.applicationContext,
+            ContactDataBase::class.java,
+            "Contacts"
+        )
+            .allowMainThreadQueries()
+            .build()
+
         val contactListFragment = ContactListFragment().apply {
             val bundle = Bundle()
-            bundle.putSerializable("contactsList", this@MainActivity.contacts)
+            bundle.putSerializable("contactsDB", db)
             arguments = bundle
         }
 
@@ -31,8 +36,12 @@ class MainActivity : AppCompatActivity(), ContactCommunication {
             commit()
         }
 
-        findViewById<AppCompatButton>(R.id.btnAddContact).setOnClickListener{
-            val createContactFragment = CreateContactFragment()
+        findViewById<AppCompatButton>(R.id.btnAddContact).setOnClickListener {
+            val createContactFragment = CreateContactFragment().apply {
+                val bundle = Bundle()
+                bundle.putSerializable("contactsDB", db)
+                arguments = bundle
+            }
 
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.flMain, createContactFragment)
@@ -44,17 +53,10 @@ class MainActivity : AppCompatActivity(), ContactCommunication {
 
     }
 
-    override fun deleteContact(contact: Contact) {
-        this.contacts.remove(contact)
-
-    }
-
-    override fun createContact(contact: Contact) {
-        this.contacts.add(contact)
-
+    override fun contactCreated() {
         val fragment = ContactListFragment().apply {
             val bundle = Bundle()
-            bundle.putSerializable("contactsList", this@MainActivity.contacts)
+            bundle.putSerializable("contactsDB", db)
             arguments = bundle
         }
 

@@ -8,14 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipp.estg.contactlist.ContactCommunication
 import pt.ipp.estg.contactlist.R
+import pt.ipp.estg.contactlist.data_base.ContactDataBase
+import pt.ipp.estg.contactlist.data_base.ContactsDao
 import pt.ipp.estg.contactlist.models.Contact
 
 class ContactAdapter(
-    private val communicator: ContactCommunication,
-    private val contacts: List<Contact>
+    private val contactsDB: ContactDataBase,
+    private val contacts: ArrayList<Contact>
 
 ) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
-
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvName: TextView = view.findViewById(R.id.tvName)
@@ -45,9 +46,9 @@ class ContactAdapter(
                 tvPhoneNumber.text = phone
             }
 
-
             btnDelete.setOnClickListener {
-                communicator.deleteContact(contact)
+                this@ContactAdapter.contactsDB.getContactsDao().deleteContact(contact)
+                this@ContactAdapter.contacts.remove(contact)
                 this@ContactAdapter.notifyItemRemoved(position)
             }
         }

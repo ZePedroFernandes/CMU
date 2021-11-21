@@ -9,31 +9,35 @@ import androidx.recyclerview.widget.RecyclerView
 import pt.ipp.estg.contactlist.ContactCommunication
 import pt.ipp.estg.contactlist.R
 import pt.ipp.estg.contactlist.adapter.ContactAdapter
+import pt.ipp.estg.contactlist.data_base.ContactDataBase
 import pt.ipp.estg.contactlist.models.Contact
 
 class ContactListFragment : Fragment(R.layout.contact_list) {
-    private lateinit var communicator: ContactCommunication
-    private lateinit var contacts: List<Contact>
+    private lateinit var contacts: ArrayList<Contact>
+    private lateinit var contactsDB: ContactDataBase
+    private lateinit var communication: ContactCommunication
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        this.communicator = context as ContactCommunication
+        this.communication = context as ContactCommunication
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments.let {
-            this.contacts = it!!.getSerializable("contactsList") as List<Contact>
+        arguments?.let {
+            this.contactsDB = it.getSerializable("contactsDB") as ContactDataBase
         }
+
+        this.contacts = this.contactsDB.getContactsDao().getAll() as ArrayList
 
         view.findViewById<RecyclerView>(R.id.rvContactList).apply {
             adapter = ContactAdapter(
-                this@ContactListFragment.communicator,
+                this@ContactListFragment.contactsDB,
                 this@ContactListFragment.contacts
             )
-            layoutManager = LinearLayoutManager(this@ContactListFragment.requireContext())
+            layoutManager = LinearLayoutManager(this@ContactListFragment.context)
         }
     }
 }
