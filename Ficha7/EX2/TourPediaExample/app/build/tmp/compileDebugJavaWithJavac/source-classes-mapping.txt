@@ -1,0 +1,2 @@
+pt/ipp/estg/tourpediaexample/BuildConfig.java
+ pt.ipp.estg.tourpediaexample.BuildConfig
