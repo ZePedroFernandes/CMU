@@ -1,4 +1,0 @@
-cmu/downloadimages/databinding/ActivityMainBinding.java
- cmu.downloadimages.databinding.ActivityMainBinding
-cmu/downloadimages/BuildConfig.java
- cmu.downloadimages.BuildConfig
