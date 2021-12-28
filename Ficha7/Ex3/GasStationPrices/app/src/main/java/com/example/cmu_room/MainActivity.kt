@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity(), GasStationFragment.GasStationListComun
     private val listFragment = GasStationFragment.newInstance(gasStationList)
 
     private val gasStationDao by lazy {
-        GasStationDB.getInstance(context = applicationContext)?.gasStationDao()
+        GasStationDB.getInstance(applicationContext)?.gasStationDao()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fmt = supportFragmentManager.beginTransaction()
-        fmt.add(R.id.fragmentContainerView, listFragment)
+        val fragTransition = supportFragmentManager.beginTransaction()
+        fragTransition.add(R.id.fragmentContainerView, listFragment)
             .commit()
 
         updateList(gasStationList)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), GasStationFragment.GasStationListComun
     }
 
     override fun updateList(gasStatations: MutableList<GasStation>) {
-        val dao = GasStationDB.getInstance(context = applicationContext)?.gasStationDao()
+        val dao = GasStationDB.getInstance(applicationContext)?.gasStationDao()
         val exec = GasStationDB.executors
         exec.execute {
             gasStationList.clear()
