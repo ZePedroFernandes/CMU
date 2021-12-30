@@ -26,6 +26,9 @@ interface GasStationDao {
     @Query("SELECT * FROM Fuel WHERE gasStationId = :gasStationId AND fuelName = :fuelName")
     fun getGasStationFuel(gasStationId: Int, fuelName: String): List<Fuel>
 
+    @Query("SELECT * FROM Fuel WHERE gasStationId = :gasStationId")
+    fun getGasStationFuels(gasStationId: Int): List<Fuel>
+
     @Transaction
     @Query("SELECT * FROM gasstation WHERE gasstation.id = :idGasStation")
     fun getGasStationAndFuels(idGasStation: Int): GasStationAndFuels

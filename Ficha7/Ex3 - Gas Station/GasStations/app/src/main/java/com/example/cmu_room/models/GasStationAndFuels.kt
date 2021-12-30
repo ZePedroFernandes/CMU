@@ -2,6 +2,7 @@ package com.example.cmu_room.models
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import java.io.Serializable
 
 class GasStationAndFuels(
     @Embedded
@@ -11,4 +12,4 @@ class GasStationAndFuels(
         entityColumn = "gasStationId"
     )
     val fuels: List<Fuel>
-)
+) : Serializable
