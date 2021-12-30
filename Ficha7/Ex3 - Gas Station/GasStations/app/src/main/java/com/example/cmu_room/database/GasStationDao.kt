@@ -1,9 +1,6 @@
 package com.example.cmu_room.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.example.cmu_room.models.Fuel
 import com.example.cmu_room.models.GasStation
 import com.example.cmu_room.models.GasStationAndFuels
@@ -17,11 +14,17 @@ interface GasStationDao {
     @Query("SELECT * FROM gasstation WHERE gasstation.id = :id")
     fun getGasStation(id: Int): GasStation
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGasStation(gasStation: GasStation): Long
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFuel(fuel: Fuel)
+
+    @Query("SELECT * FROM Fuel WHERE id = :id")
+    fun getFuel(id: Int): List<Fuel>
+
+    @Query("SELECT * FROM Fuel WHERE gasStationId = :gasStationId AND fuelName = :fuelName")
+    fun getGasStationFuel(gasStationId: Int, fuelName: String): List<Fuel>
 
     @Transaction
     @Query("SELECT * FROM gasstation WHERE gasstation.id = :idGasStation")

@@ -15,9 +15,8 @@ class GasStationDetails : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            val obj = it.getSerializable(GAS_STATION)
-            when (obj) {
-                is GasStation -> gasStation = obj as GasStation
+            when (val obj = it.getSerializable(GAS_STATION)) {
+                is GasStation -> gasStation = obj
             }
         }
     }
