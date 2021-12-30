@@ -6,10 +6,12 @@ import java.io.Serializable
 
 @Entity
 data class GasStation(
+
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    public val id: Int = 0,
     val name: String,
     val address: String = "",
     val latitude: Double = 0.0,
-    val longitude: Double = 0.0
-) : Serializable
+    val longitude: Double = 0.0,
+) : Serializable {
+}

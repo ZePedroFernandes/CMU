@@ -44,6 +44,7 @@ class GasStationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_gas_station_list, container, false)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.list)
+
         if (recyclerView is RecyclerView) {
             with(recyclerView) {
                 layoutManager = when {

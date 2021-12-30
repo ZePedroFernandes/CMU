@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             val id: Long = intent!!.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
             if (id == downloadID) {
                 val file = getExternalFilesDir(null)
-                val path = file?.absolutePath + "/" +  imageName
+                val path = file?.absolutePath + "/" + imageName
 
                 findViewById<ImageView>(R.id.ivDownloaded).setImageURI(path.toUri())
             }
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         val file = File(getExternalFilesDir(null), imageName);
 
-        if (file.exists()){
+        if (file.exists()) {
             file.delete()
         }
 
