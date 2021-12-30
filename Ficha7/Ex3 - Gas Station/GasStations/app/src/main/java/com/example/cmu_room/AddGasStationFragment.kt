@@ -11,7 +11,7 @@ import com.example.cmu_room.models.GasStation
 
 class AddGasStationFragment : DialogFragment() {
     // Use this instance of the interface to deliver action events
-    internal lateinit var listener: NoticeDialogListener
+    private lateinit var listener: NoticeDialogListener
 
     /* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
@@ -30,8 +30,10 @@ class AddGasStationFragment : DialogFragment() {
             listener = context as NoticeDialogListener
         } catch (e: ClassCastException) {
             // The activity doesn't implement the interface, throw exception
-            throw ClassCastException((context.toString() +
-                    " must implement NoticeDialogListener"))
+            throw ClassCastException(
+                (context.toString() +
+                        " must implement NoticeDialogListener")
+            )
         }
     }
 
@@ -42,24 +44,25 @@ class AddGasStationFragment : DialogFragment() {
             val inflater = requireActivity().layoutInflater;
 
 
-            val v =inflater.inflate(R.layout.fragment_gas_station_add, null)
+            val v = inflater.inflate(R.layout.fragment_gas_station_add, null)
             //val gasStationId = v.findViewById<EditText>(R.id.gasStationId)
             val gasStationName = v.findViewById<EditText>(R.id.gasStationName)
 
             builder.setView(v)
-                    // Add action buttons
-                    .setPositiveButton(R.string.add,
-                            DialogInterface.OnClickListener { dialog, id ->
-                                listener.onDialogPositiveClick(
-                                        GasStation(
-                                            name= gasStationName.text.toString()
-                                        ))
-                                dialog.dismiss()
-                            })
-                    .setNegativeButton(R.string.cancel,
-                            DialogInterface.OnClickListener { dialog, id ->
-                                dialog.cancel()
-                            })
+                // Add action buttons
+                .setPositiveButton(R.string.add,
+                    DialogInterface.OnClickListener { dialog, id ->
+                        listener.onDialogPositiveClick(
+                            GasStation(
+                                name = gasStationName.text.toString()
+                            )
+                        )
+                        dialog.dismiss()
+                    })
+                .setNegativeButton(R.string.cancel,
+                    DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

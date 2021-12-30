@@ -1,10 +1,9 @@
 package com.example.cmu_room
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cmu_room.databinding.FragmentGasStationListItemBinding
 import com.example.cmu_room.models.GasStation
 

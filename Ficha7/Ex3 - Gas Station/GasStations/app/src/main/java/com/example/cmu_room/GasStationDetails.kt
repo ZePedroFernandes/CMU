@@ -1,13 +1,11 @@
 package com.example.cmu_room
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.example.cmu_room.models.GasStation
-import java.time.format.DateTimeFormatter
 
 private const val GAS_STATION = "GAS_STATION"
 
@@ -18,7 +16,7 @@ class GasStationDetails : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             val obj = it.getSerializable(GAS_STATION)
-            when( obj ){
+            when (obj) {
                 is GasStation -> gasStation = obj as GasStation
             }
         }

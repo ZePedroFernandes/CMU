@@ -32,7 +32,7 @@ interface GasStationDao {
     fun insertGasStationAndFuels(gasStationAndFuels: GasStationAndFuels) {
         val gasStationId = insertGasStation(gasStation = gasStationAndFuels.gasStation)
         for (fuel in gasStationAndFuels.fuels) {
-            insertFuel(fuel.clone(gasStationId = gasStationId.toInt()))
+            insertFuel(fuel.clone(/*gasStationId = gasStationId.toInt()*/))
         }
     }
 

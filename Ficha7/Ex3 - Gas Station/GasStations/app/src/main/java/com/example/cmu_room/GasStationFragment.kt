@@ -1,5 +1,6 @@
 package com.example.cmu_room
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -65,6 +66,7 @@ class GasStationFragment : Fragment() {
         return view
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateList() {
         Log.d("temp", this.gasStationList.size.toString() + " t2")
         view?.let {
@@ -87,6 +89,10 @@ class GasStationFragment : Fragment() {
             }
     }
 
+    /**
+     * Allows gas station list update
+     * Allows going to the details of a gas station
+     */
     interface GasStationListComunication {
         fun updateList(gasStatations: MutableList<GasStation>)
         fun goToDetails(position: Int)

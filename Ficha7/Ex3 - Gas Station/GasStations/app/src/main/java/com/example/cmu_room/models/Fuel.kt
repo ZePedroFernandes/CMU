@@ -16,9 +16,9 @@ data class Fuel(
 ) : Serializable {
 
     fun clone(
-        gasStationId: Int = this.gasStationId,
-        fuelName: String = this.fuelName,
-        price: Double = this.price
-    ) = Fuel(fuelName, price, this.date, this.gasStationId, this.id)
+//        gasStationId: Int = this.gasStationId,
+//        fuelName: String = this.fuelName,
+//        price: Double = this.price
+    ) = Fuel(this.fuelName, this.price, this.date, this.gasStationId, this.id)
 
 }
